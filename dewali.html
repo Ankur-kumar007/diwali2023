@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy-Diwali</title>
+  <title>Crackers in Javascript on mouse move</title>
+<link rel="stylesheet" href="index.css">
+<!-- css-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+</head>
+<style>
+  *{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+   position: center;
+
+  }
+  body{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #111;
+  }
+  .flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  .cr{
+    position: absolute;
+  }
+  .cr div{
+    width: 4px;
+    height: 40px;
+    background-color: #ff0080;
+    border: 9px;
+    position: absolute;
+    transform: rotate(calc(var(--i)* 60deg));
+    filter: hue-rotate(calc(var(--i)* 60deg));
+    transform-origin: bottom;
+    animation:br 1s linear forwards;
+  }
+
+ @keyframes br {
+  0%{
+    transform: rotate(calc(var(--i)* 60deg)) translate(0px)
+    scaleY(0);
+ }
+ 30%{
+  transform: rotate(calc(var(--i)* 60deg)) translateY
+  (40px) scaleY(1);
+    opacity: 1;
+ }
+ 100%{
+  transform: rotate(calc(var(--i)* 60deg)) translateY(120px);
+  scaleY(0);
+   opacity: 0;
+ }
+}
+
+</style>
+<body>
+
+  <div class="cr flex">
+        <div style="--i: 1;"></div>
+        <div style="--i: 2;"></div>
+        <div style="--i: 3;"></div>
+        <div style="--i: 4;"></div>
+        <div style="--i: 5;"></div>
+        <div style="--i: 6;"></div>
+  </div>
+  
+  <div class="circle">
+    <h1> Happy <br>
+    <span>Diwali</span>
+  </h1>
+  <div class="lamp"></div>
+  </div>
+
+  <footer> 
+   
+    <div class ="content">
+      <p>Have a Happy & Safe Diwali.</p>
+     
+      <hr>
+    </div>
+    <div class ="H">
+      <p> <center> Wishes by Ankur Kumar..</center></p>
+    </div>
+    
+  </footer>
+  <script> 
+  var body=document.body;
+  var ok=true;
+  body.onmousemove=(e)=>{
+    if(ok){
+      make(e);
+      setTimeout(() =>{
+        ok=true;
+      }, 100);
+      ok=false;
+    }
+  }
+  function make(e){
+    var x=e.clientX,
+    y=e.clientY;
+    sc=Math.random();
+
+    var elem=`
+     <div class="cr flex" style="left: ${x}px; top: ${y}px;">
+        <div style="--i: 1;"></div>
+        <div style="--i: 2;"></div>
+        <div style="--i: 3;"></div>
+        <div style="--i: 4;"></div>
+        <div style="--i: 5;"></div>
+        <div style="--i: 6;"></div>
+  </div>`
+     
+  body.insertAdjacentHTML('beforeend',elem);
+
+  setTimeout(() =>{
+  body.firstElementchild.remove();
+  },1000);
+  }
+  </script>
+  
+</body>
+</html>
+<!-- created by Ankur kumar -->
